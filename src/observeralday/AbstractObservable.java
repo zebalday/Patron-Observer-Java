@@ -11,11 +11,11 @@ import java.util.Observer;
 
 public abstract class AbstractObservable extends Observable {
 
-    //OBSERVERS LIST -> ONLY ATRIBUTE
+    // OBSERVERS LIST -> ONLY ATRIBUTE
     protected ArrayList<Observer> Observers = new ArrayList<>();
     private boolean changed;
     
-    //OBSERVABLE METHODS
+    // OBSERVABLE METHODS
     @Override
     public void addObserver(Observer Observer){Observers.add(Observer);}
 

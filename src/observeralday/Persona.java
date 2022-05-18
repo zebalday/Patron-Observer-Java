@@ -5,12 +5,12 @@ import java.util.Observer;
 
 public class Persona extends AbstractObservable {
     
-    //ATRIBUTES
+    // ATRIBUTES
     private String name;
     private String country;
     private int age;
     
-    //CONSTRUCTORS
+    // CONSTRUCTORS
     public Persona(String name, String country, int age) {
         this.name = name;
         this.country = country;
@@ -19,7 +19,7 @@ public class Persona extends AbstractObservable {
 
     public Persona() {}
     
-    //MUTATORS
+    // MUTATORS
     public void setName(String name) {this.name = name;}
     public void setCountry(String country) {this.country = country;}
     public void setAge(int age) {this.age = age;}
@@ -28,14 +28,24 @@ public class Persona extends AbstractObservable {
     public String getCountry() {return country;}
     public int getAge() {return age;}
     
-    //METHODS
+    // METHODS
     public void changeAge(int ages){
         this.age = this.age + (ages);
         
-        super.setChanged();
-        if(super.hasChanged()){
-            notifyObservers();
-            notifyObservers(this);
+        if (age >= 21 && age < 60){
+            super.setChanged();
+            if(super.hasChanged()){
+                notifyObservers();
+                notifyObservers(this);
+            }
+        }
+        
+        else if (age >= 60){
+            super.setChanged();
+                if(super.hasChanged()){
+                    notifyObservers();
+                    notifyObservers(this);
+            }
         }
     }
     
@@ -43,7 +53,7 @@ public class Persona extends AbstractObservable {
     public void notifyObservers(){
         if (super.hasChanged()){
             for (Observer Observer : Observers) {
-                Observer.update(this, Observer);}        }
+                Observer.update(this, this.age);}        }
         super.clearChanged();
     }
 }
