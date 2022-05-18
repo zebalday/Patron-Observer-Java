@@ -12,6 +12,4 @@ public interface ObserverInterface extends Observer{
     @Override
     public void update(Observable target, Object value);
     
-    public void Update(int age);
-    
 }

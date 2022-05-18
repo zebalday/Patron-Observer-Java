@@ -17,9 +17,4 @@ public class Admin implements ObserverInterface{
     public void update(Observable persona, Object value){
         System.out.println(persona+" ha cambiado su edad a: "+value+".");
     }
-    
-    @Override
-    public void Update(int age) {
-        System.out.println("El objeto ha cambiado su edad a: "+age+".");
-    }
 }

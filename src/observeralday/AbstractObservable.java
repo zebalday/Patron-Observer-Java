@@ -6,20 +6,27 @@ package observeralday;
 
 import java.util.Observable;
 import java.util.ArrayList;
+import java.util.Observer;
 
 
 public abstract class AbstractObservable extends Observable {
 
     //OBSERVERS LIST -> ONLY ATRIBUTE
-    protected ArrayList<ObserverInterface> Observers = new ArrayList<ObserverInterface>();
+    protected ArrayList<Observer> Observers = new ArrayList<>();
     private boolean changed;
     
     //OBSERVABLE METHODS
-    protected void addObserver(ObserverInterface Observer){Observers.add(Observer);}
+    @Override
+    public void addObserver(Observer Observer){Observers.add(Observer);}
 
-    protected void deleteObserver(ObserverInterface Observer){Observers.remove(Observer);}
+    @Override
+    public void deleteObserver(Observer Observer){Observers.remove(Observer);}
     
-    protected int countObserver(){return Observers.size();}
+    @Override
+    public void deleteObservers(){Observers.clear();}
+    
+    @Override
+    public int countObservers(){return Observers.size();}
     
     @Override
     protected void setChanged(){changed = true;}
@@ -32,10 +39,5 @@ public abstract class AbstractObservable extends Observable {
     
     @Override
     public void notifyObservers(){}
-    
-    public void notifyObserversData(){}
-    
-    
-    
     
 }

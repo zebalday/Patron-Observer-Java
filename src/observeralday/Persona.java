@@ -1,6 +1,8 @@
 
 package observeralday;
 
+import java.util.Observer;
+
 public class Persona extends AbstractObservable {
     
     //ATRIBUTES
@@ -40,17 +42,8 @@ public class Persona extends AbstractObservable {
     @Override
     public void notifyObservers(){
         if (super.hasChanged()){
-            for (ObserverInterface Observer : Observers) {
+            for (Observer Observer : Observers) {
                 Observer.update(this, Observer);}        }
         super.clearChanged();
     }
-    
-    @Override
-    public void notifyObservers(Object value){
-        for (ObserverInterface Observer : super.Observers) {
-            Observer.Update(this.age);}
-        super.clearChanged();
-    }
-
-    
 }
